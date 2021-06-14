@@ -1,0 +1,19 @@
+{
+    "name": "wunnam/nanti_flutter_web_api",
+    "description": "\"an api for a mobile app\"",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Mahmud Chamtooni",
+            "email": "mudisheikh@outlook.com"
+        }
+    ],
+    "require": {
+      "ext-json": "*"
+    },
+    "autoload":{
+        "psr-4":{
+            "App\\":"app/"
+        }
+    }
+}
