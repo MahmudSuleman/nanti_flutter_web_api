@@ -34,8 +34,9 @@ class Base
         $sql .= ")";
 
         $sql = str_replace(", )", ')', $sql);
+//        echo $sql;
 
-        try {
+        try{
             $stmt = $this->db->prepare($sql);
             $stmt->execute();
 
@@ -75,8 +76,40 @@ class Base
 
     }
 
-    public function all(){
-        $sql = "SELECT * FROM $this->table";
+
+    public function all($sort=' order by id desc', $extra= ''){
+        $sql = '';
+        if($sort == null)
+            $sql = "SELECT * FROM $this->table $extra $sort";
+        else
+            $sql = "SELECT * FROM $this->table $extra $sort";
+
+//        echo $sql;
+
+        $data = [];
+        try {
+            $result = $this->db->query($sql);
+            $data = $result->fetchAll(\PDO::FETCH_ASSOC);
+
+        }catch (\Exception $e){
+            var_dump($e);
+        }
+        return json_encode($data);
+    }
+    public function raw($sql=null){
+        $data = [];
+        try {
+            $result = $this->db->query($sql);
+            $data = $result ? $result->fetchAll(\PDO::FETCH_ASSOC) :[];
+
+        }catch (\Exception $e){
+            var_dump($e);
+        }
+        return json_encode($data);
+    }
+
+    public function findById($id){
+        $sql = "SELECT * FROM $this->table WHERE id='$id'";
         $data = [];
         try {
             $result = $this->db->query($sql);
@@ -88,17 +121,18 @@ class Base
         return json_encode($data);
     }
 
-    public function find($id){
-        $sql = "SELECT * FROM $this->table WHERE id='$id'";
+    public function find($field, $value){
+        $sql = "SELECT * FROM $this->table WHERE $field = '$value'";
+//        echo $sql;
         $data = [];
         try {
             $result = $this->db->query($sql);
-            $data = $result->fetchAll(\PDO::FETCH_ASSOC);
+            $data = $result ? $result->fetchAll(\PDO::FETCH_ASSOC): [];
 
         }catch (\Exception $e){
             var_dump($e);
         }
-        return json_encode($data);
+        return $data;
     }
 
 }
