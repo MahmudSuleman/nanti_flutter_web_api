@@ -22,7 +22,7 @@ class Base
 
     }
 
-    public function store($columns=[], $values=[]){
+    public function store($columns, $values){
         $sql = "INSERT INTO ". $this->table ." (";
         foreach ($columns as $column){
             $sql .= "$column, ";
