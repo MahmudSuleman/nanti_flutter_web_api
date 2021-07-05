@@ -59,6 +59,7 @@ class Base
         }
         $sql = substr( $sql, 0, -1);
 
+
         $sql .= " WHERE id = '". $id ."'";
         try {
             $stmt = $this->db->prepare($sql);
@@ -73,6 +74,8 @@ class Base
         }catch(\Exception $e){
             return json_encode(['success'=>false, 'message'=>$e]);
         }
+
+//        echo $sql;
 
     }
 
@@ -96,6 +99,7 @@ class Base
         }
         return json_encode($data);
     }
+
     public function raw($sql=null){
         $data = [];
         try {

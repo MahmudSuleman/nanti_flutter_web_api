@@ -29,5 +29,9 @@ class Maintenance extends Base{
         }
    }
 
+    public function markDone($maintenanceId){
+        return parent::update(['isDone'], [1], $maintenanceId);
+    }
+
 
 }
