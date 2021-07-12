@@ -1,11 +1,11 @@
 <?php
 include_once '../init.php';
 
-$devices = (new \App\models\Device())->all();
+$devices = (new \App\Models\Device())->all();
 
-$maintenance = (new \App\models\Maintenance())->all();
+$maintenance = (new \App\Models\Maintenance())->all();
 
-$companies = (new \App\models\User())->all();
+$companies = (new \App\Models\User())->all();
 
 $dispatches = (new \App\Models\Dispatch()) -> all();
 

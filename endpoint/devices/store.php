@@ -5,7 +5,7 @@ if(isset($_POST['name'])){
     $name = $_POST['name'] ?? '';
     $serialNumber = $_POST['serialNumber'] ?? '';
     $manufacturer = $_POST['manufacturer'] ?? '';
-    $device = new \App\models\Device();
+    $device = new \App\Models\Device();
 //    check if serial number is not already available
     if ($device->serialNumberExist($serialNumber)){
 

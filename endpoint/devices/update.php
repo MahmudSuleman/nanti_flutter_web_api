@@ -6,7 +6,7 @@ if(isset($_POST['name'])){
     $name = $_POST['name'] ?? '';
     $serialNumber = $_POST['serialNumber'] ?? '';
     $manufacturer = $_POST['manufacturer'] ?? '';
-    $device = new \App\models\Device();
+    $device = new \App\Models\Device();
     echo $device->update(['name', 'manufacturer', 'serialNumber'], [$name, $manufacturer,$serialNumber], $id);
 }
 else{

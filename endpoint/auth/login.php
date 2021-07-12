@@ -1,6 +1,6 @@
 <?php
 include_once '../init.php';
-$user = new \App\models\Auth();
+$user = new \App\Models\Auth();
 if (isPost()){
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';

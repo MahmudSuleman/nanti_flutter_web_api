@@ -1,5 +1,5 @@
 <?php
-namespace App\models;
+namespace App\Models;
 
 class Maintenance extends Base{
     protected $table = 'maintenances';

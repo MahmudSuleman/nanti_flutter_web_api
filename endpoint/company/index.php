@@ -1,5 +1,5 @@
 <?php
 include_once '../init.php';
 
-$company = new \App\models\Company();
+$company = new \App\Models\Company();
 echo $company->all();

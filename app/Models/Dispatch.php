@@ -1,6 +1,6 @@
 <?php
 namespace App\Models;
-class Dispatch extends \App\models\Base{
+class Dispatch extends \App\Models\Base{
     protected $table = 'dispatches';
 
     public function raw($sql=null)

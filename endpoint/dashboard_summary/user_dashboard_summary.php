@@ -6,7 +6,7 @@ if(isGet()){
 
 //    $devices = (new \App\models\Device())->all('', " where companyId = $id");
 
-    $maintenance = (new \App\models\Maintenance())->all('', " where companyId = $id");
+    $maintenance = (new \App\Models\Maintenance())->all('', " where companyId = $id");
 
 //    $companies = (new \App\models\User())->all('', " where companyId = $id");
 

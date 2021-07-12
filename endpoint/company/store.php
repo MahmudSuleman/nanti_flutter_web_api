@@ -5,7 +5,7 @@ if(isset($_POST['name'])){
     $name = $_POST['name'] ?? '';
     $type = $_POST['type'] ?? '';
     $contact = $_POST['contact'] ?? '';
-    $company = new \App\models\Company();
+    $company = new \App\Models\Company();
 
 
         echo $company->store(['name', 'type', 'contact'], [$name, $type,$contact]);

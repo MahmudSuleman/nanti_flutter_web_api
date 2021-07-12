@@ -1,7 +1,7 @@
 <?php
 
-use App\models\Device;
-use App\models\Dispatch;
+use App\Models\Device;
+use App\Models\Dispatch;
 
 include_once '../init.php';
 

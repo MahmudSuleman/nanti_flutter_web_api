@@ -7,7 +7,7 @@ if (isPost()) {
     $companyId = $_POST['companyId'] ?? 0;
     $userType = $_POST['userType'] ?? 2;
     $password = password_hash($password, PASSWORD_DEFAULT);
-    $user = new \App\models\Auth();
+    $user = new \App\Models\Auth();
     if ($user->usernameExist($username)){
         echo json_encode(['success'=>false, 'message'=>'Username taken']);
     }else{

@@ -1,6 +1,6 @@
 <?php
 include_once '../init.php';
-$maintenance = new \App\models\Maintenance();
+$maintenance = new \App\Models\Maintenance();
 if (isPost()) {
     $companyId = $_POST['companyId'] ?? '';
     $deviceId = $_POST['deviceId'] ?? '';
