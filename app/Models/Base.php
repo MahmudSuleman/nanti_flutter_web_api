@@ -14,15 +14,17 @@ class Base
 
     }
 
-    public function destroy($id){
+    public function destroy($id):array
+    {
         $sql = "DELETE FROM {$this->table} WHERE id = '$id'";
         $res = $this->db->query($sql);
 
-        return $res ? json_encode(['success'=>true]) : json_encode(['success'=>false]);
+        return $res ? ['success'=>true] : ['success'=>false];
 
     }
 
-    public function store($columns, $values){
+    public function store($columns, $values):array
+    {
         $sql = "INSERT INTO ". $this->table ." (";
         foreach ($columns as $column){
             $sql .= "$column, ";
@@ -41,18 +43,18 @@ class Base
             $stmt->execute();
 
             if($stmt->errorInfo()[1] == ''){
-                return json_encode(['success'=>true]);
+                return ['success'=>true];
             }else{
-                return json_encode(['success'=>false, 'message'=>$stmt->errorInfo()]);
+                return ['success'=>false, 'message'=>$stmt->errorInfo()];
             }
 
         }catch(\Exception $e){
-            return json_encode(['success'=>false, 'message'=>$e]);
+            return ['success'=>false, 'message'=>$e];
         }
 
     }
 
-    public function update($columns=[], $values=[], $id){
+    public function update( $id, $columns=[], $values=[]){
         $sql = "UPDATE ". $this->table ." SET ";
         for($i = 0 ; $i <= count($columns) -1; $i++){
             $sql .= "{$columns[$i]} = '". $values[$i] ."',";
@@ -80,27 +82,22 @@ class Base
     }
 
 
-    public function all($sort=' order by id desc', $extra= ''){
-        $sql = '';
-        if($sort == null)
-            $sql = "SELECT * FROM $this->table $extra $sort";
-        else
-            $sql = "SELECT * FROM $this->table $extra $sort";
-
-//        echo $sql;
-
+    public function all($extra= ' where 1', $sort=' '): array
+    {
+        $sql = "SELECT * FROM $this->table $extra $sort";
         $data = [];
         try {
             $result = $this->db->query($sql);
-            $data = $result->fetchAll(\PDO::FETCH_ASSOC);
+            $data =$result ? $result->fetchAll(\PDO::FETCH_ASSOC) : [];
 
         }catch (\Exception $e){
             var_dump($e);
         }
-        return json_encode($data);
+        return $data;
     }
 
-    public function raw($sql=null){
+    public function raw($sql=null): array
+    {
         $data = [];
         try {
             $result = $this->db->query($sql);
@@ -109,10 +106,11 @@ class Base
         }catch (\Exception $e){
             var_dump($e);
         }
-        return json_encode($data);
+        return $data;
     }
 
-    public function findById($id){
+    public function findById($id): array
+    {
         $sql = "SELECT * FROM $this->table WHERE id='$id'";
         $data = [];
         try {
@@ -122,17 +120,16 @@ class Base
         }catch (\Exception $e){
             var_dump($e);
         }
-        return json_encode($data);
+        return ($data);
     }
 
-    public function find($field, $value){
+    public function find($field, $value): array
+    {
         $sql = "SELECT * FROM $this->table WHERE $field = '$value'";
-//        echo $sql;
         $data = [];
         try {
             $result = $this->db->query($sql);
             $data = $result ? $result->fetchAll(\PDO::FETCH_ASSOC): [];
-
         }catch (\Exception $e){
             var_dump($e);
         }

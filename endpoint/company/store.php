@@ -8,7 +8,8 @@ if(isset($_POST['name'])){
     $company = new \App\Models\Company();
 
 
-        echo $company->store(['name', 'type', 'contact'], [$name, $type,$contact]);
+        $result = $company->store(['name', 'type', 'contact'], [$name, $type,$contact]);
+        echo json_encode($result);
 
 }
 else{

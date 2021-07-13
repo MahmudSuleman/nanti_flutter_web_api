@@ -4,7 +4,7 @@ namespace App\Models;
 class Maintenance extends Base{
     protected $table = 'maintenances';
 
-    public function raw($sql = null)
+    public function raw($sql = null):array
     {
         $sql = "select * from view_maintenance order by id desc";
 
@@ -22,15 +22,13 @@ class Maintenance extends Base{
             if($isDone != 1){
                 return json_encode(['success'=>false, 'message'=>'device exist already']);
             }
-            return parent::store($columns, $values);
 
-        }else{
-            return parent::store($columns, $values);
         }
+       return parent::store($columns, $values);
    }
 
     public function markDone($maintenanceId){
-        return parent::update(['isDone'], [1], $maintenanceId);
+        return parent::update($maintenanceId, ['isDone'], [1]);
     }
 
 

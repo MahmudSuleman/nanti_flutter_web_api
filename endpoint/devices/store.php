@@ -12,7 +12,7 @@ if(isset($_POST['name'])){
 //        todo: data could be updated instead if the serial number already exist
         echo json_encode(['success'=>'false', 'message' => 'Serial number already exist']);
     }else{
-        echo $device->store(['name', 'manufacturer', 'serialNumber'], [$name, $manufacturer,$serialNumber]);
+        echo json_encode($device->store(['name', 'manufacturer', 'serialNumber'], [$name, $manufacturer,$serialNumber]));
     }
 
 }

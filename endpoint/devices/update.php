@@ -7,7 +7,7 @@ if(isset($_POST['name'])){
     $serialNumber = $_POST['serialNumber'] ?? '';
     $manufacturer = $_POST['manufacturer'] ?? '';
     $device = new \App\Models\Device();
-    echo $device->update(['name', 'manufacturer', 'serialNumber'], [$name, $manufacturer,$serialNumber], $id);
+    echo $device->update($id,['name', 'manufacturer', 'serialNumber'], [$name, $manufacturer,$serialNumber]);
 }
 else{
     echo json_encode(['success' => false, 'message'=> 'unsupported request type, try using POST']);

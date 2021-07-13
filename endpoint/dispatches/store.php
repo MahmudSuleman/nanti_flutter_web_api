@@ -11,7 +11,7 @@ if(isset($_POST)){
     $dispatch = new Dispatch();
     $msg =  $dispatch->store(['deviceId', 'companyId'], [$deviceId, $companyId]);
     if($msg){
-        echo  (new Device())->update(['isAvailable'], [0], $deviceId);
+        echo  (new Device())->update($deviceId, ['isAvailable'], [0]);
     }
 
 }

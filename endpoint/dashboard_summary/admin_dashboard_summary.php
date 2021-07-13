@@ -10,10 +10,10 @@ $companies = (new \App\Models\User())->all();
 $dispatches = (new \App\Models\Dispatch()) -> all();
 
 $resource = json_encode(['success' => true,
-    'data' => ['devices' => count(json_decode($devices)),
-        'maintenances' => count(json_decode($maintenance)),
-        'companies' => count(json_decode($companies)),
-        'dispatches' => count(json_decode($dispatches)) ]]);
+    'data' => ['devices' => count($devices),
+        'maintenances' => count($maintenance),
+        'companies' => count($companies),
+        'dispatches' => count($dispatches) ]]);
 
 
 echo $resource;
