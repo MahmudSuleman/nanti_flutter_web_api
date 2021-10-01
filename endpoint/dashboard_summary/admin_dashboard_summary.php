@@ -1,6 +1,6 @@
 <?php
 include_once '../init.php';
-
+header('Access-Control-Allow-Origin: *');
 $devices = (new \App\Models\Device())->all();
 
 $maintenance = (new \App\Models\Maintenance())->all();

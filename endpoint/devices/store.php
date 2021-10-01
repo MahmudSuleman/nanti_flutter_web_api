@@ -1,6 +1,6 @@
 <?php
 include_once '../init.php';
-
+header('Access-Control-Allow-Origin: *');
 if(isset($_POST['name'])){
     $name = $_POST['name'] ?? '';
     $serialNumber = $_POST['serialNumber'] ?? '';

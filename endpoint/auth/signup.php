@@ -1,13 +1,16 @@
 <?php
-include_once '../init.php';
 
+use App\Models\Auth;
+
+include_once '../init.php';
+header('Access-Control-Allow-Origin: *');
 if (isPost()) {
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
     $companyId = $_POST['companyId'] ?? 0;
     $userType = $_POST['userType'] ?? 2;
     $password = password_hash($password, PASSWORD_DEFAULT);
-    $user = new \App\Models\Auth();
+    $user = new Auth();
     if ($user->usernameExist($username)){
         echo json_encode(['success'=>false, 'message'=>'Username taken']);
     }else{

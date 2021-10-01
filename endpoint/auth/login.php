@@ -1,6 +1,10 @@
 <?php
+
+use App\Models\Auth;
+
 include_once '../init.php';
-$user = new \App\Models\Auth();
+header('Access-Control-Allow-Origin: *');
+$user = new Auth();
 if (isPost()){
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';

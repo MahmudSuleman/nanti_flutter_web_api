@@ -1,5 +1,6 @@
 <?php
 include_once '../init.php';
+header('Access-Control-Allow-Origin: *');
 $maintenance = new \App\Models\Maintenance();
 if (isPost()) {
     $companyId = $_POST['companyId'] ?? '';

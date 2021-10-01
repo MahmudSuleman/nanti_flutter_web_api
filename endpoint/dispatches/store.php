@@ -4,7 +4,7 @@ use App\Models\Device;
 use App\Models\Dispatch;
 
 include_once '../init.php';
-
+header('Access-Control-Allow-Origin: *');
 if(isset($_POST)){
     $deviceId = $_POST['deviceId'] ?? '';
     $companyId = $_POST['companyId'] ?? '';

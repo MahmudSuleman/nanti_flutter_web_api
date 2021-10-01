@@ -1,7 +1,7 @@
 <?php
 include '../init.php';
 use App\Models\User;
-
+header('Access-Control-Allow-Origin: *');
 if(isPost()){
     $username = trim($_POST['username']) ?? '';
     $company_id = trim($_POST['company_id']) ?? '';

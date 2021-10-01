@@ -1,6 +1,6 @@
 <?php
 include_once '../init.php';
-
+header('Access-Control-Allow-Origin: *');
 if(isset($_POST['name'])){
     $id = $_POST['id'] ?? '';
     $name = $_POST['name'] ?? '';
