@@ -14,4 +14,11 @@ class Device extends  Base
         return $res ? true : false;
     }
 
+
+    public function all($extra = ' where 1', $sort = ' '): array
+    {
+        $result = $this->db->query('select * from view_manufacturer');
+        return $result ? $result->fetchAll(\PDO::FETCH_ASSOC) : [];
+    }
+
 }

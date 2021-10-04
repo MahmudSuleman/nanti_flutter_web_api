@@ -1,0 +1,2 @@
+ALTER TABLE `devices` ADD `model` VARCHAR(200) NOT NULL AFTER `name`;
+CREATE TABLE `nanti_api`. ( `id` INT(11) NOT NULL AUTO_INCREMENT , `name` VARCHAR(200) NOT NULL , `created_at` TIMESTAMP NOT NULL , `deleted_at` TIMESTAMP NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
