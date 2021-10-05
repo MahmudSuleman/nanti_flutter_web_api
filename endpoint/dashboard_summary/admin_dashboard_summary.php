@@ -12,7 +12,7 @@ $dispatches = (new \App\Models\Dispatch()) -> all();
 $resource = json_encode(['success' => true,
     'data' => ['devices' => count($devices),
         'maintenances' => count($maintenance),
-        'companies' => count($companies),
+        'clients' => count($companies),
         'dispatches' => count($dispatches) ]]);
 
 
